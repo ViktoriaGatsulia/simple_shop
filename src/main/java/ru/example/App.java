@@ -1,46 +1,47 @@
 package ru.example;
 
+import com.sun.istack.internal.NotNull;
+import ru.example.entity.Buyer;
+import ru.example.entity.Product;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Date;
+import java.util.Objects;
 
 public class App {
     //  Database credentials
-    static final String DB_URL = "jdbc:postgresql://127.0.0.1:5432/vikula";
-    static final String USER = "vikula";
-    static final String PASS = "111";
 
     public static void main(String[] argv) {
-
-        System.out.println("Testing connection to PostgreSQL JDBC");
-
         try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            System.out.println("PostgreSQL JDBC Driver is not found. Include it in your library path ");
-            e.printStackTrace();
-            return;
-        }
+            Connection conn = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/vikula", "vikula", "111");
+            conn.setAutoCommit(false);
 
-        System.out.println("PostgreSQL JDBC Driver successfully connected");
-        Connection connection = null;
+            Statement stmt = conn.createStatement();
 
-        try {
-            connection = DriverManager
-                    .getConnection(DB_URL, USER, PASS);
+            ResultSet resultSet = stmt.executeQuery("SELECT * FROM purchases;");
 
-        } catch (SQLException e) {
-            System.out.println("Connection Failed");
-            e.printStackTrace();
-            return;
-        }
+            while (resultSet.next()) {
+                Buyer buyer = (Buyer) resultSet.getObject("buyer");
+//                Product product = resultSet.getObject(2, Product.class);
 
-        if (connection != null) {
-            System.out.println("You successfully connected to database now");
-        } else {
-            System.out.println("Failed to make connection to database");
+                Date date = resultSet.getDate("date");
+
+                System.out.println("Покупатель: " + buyer);
+//                System.out.println("Тавар: " + product);
+                System.out.println("Дата: " + date);
+                System.out.println("\n===================\n");
+            }
+
+            conn.close();
+        } catch (java.sql.SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
+
 }
 
 /*
