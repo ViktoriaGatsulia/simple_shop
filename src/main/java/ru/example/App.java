@@ -1,15 +1,13 @@
 package ru.example;
 
-import com.sun.istack.internal.NotNull;
+import org.postgresql.util.PGobject;
 import ru.example.entity.Buyer;
-import ru.example.entity.Product;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
-import java.util.Objects;
 
 public class App {
     //  Database credentials
@@ -25,13 +23,7 @@ public class App {
             ResultSet resultSet = stmt.executeQuery("SELECT * FROM purchases;");
 
             while (resultSet.next()) {
-                Buyer buyer = (Buyer) resultSet.getObject("buyer");
-//                Product product = resultSet.getObject(2, Product.class);
-
                 Date date = resultSet.getDate("date");
-
-                System.out.println("Покупатель: " + buyer);
-//                System.out.println("Тавар: " + product);
                 System.out.println("Дата: " + date);
                 System.out.println("\n===================\n");
             }
