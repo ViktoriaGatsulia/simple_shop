@@ -1,4 +1,4 @@
 package ru.example.service;
 
-public class ProductSer {
+public class SearchService {
 }

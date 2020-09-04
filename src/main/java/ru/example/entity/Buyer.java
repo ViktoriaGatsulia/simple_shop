@@ -1,18 +1,15 @@
 package ru.example.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.internal.NotNull;
-import org.postgresql.util.PGBinaryObject;
-import org.postgresql.util.PGobject;
-
-import java.io.Serializable;
-import java.lang.ref.PhantomReference;
-import java.lang.ref.WeakReference;
-import java.sql.*;
-
 public class Buyer {
+    private int id;
     private String firstName;
     private String lastName;
+
+    public Buyer(String firstName, String lastName, int id) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public Buyer(String firstName, String lastName) {
         this.firstName = firstName;
@@ -35,9 +32,17 @@ public class Buyer {
         this.lastName = lastName;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return "{'" + getFirstName() + "','" + getLastName() + "'}";
+        return "{'first_name':'" + getFirstName() + "','last_name':'" + getLastName() + "'}";
     }
 
 }

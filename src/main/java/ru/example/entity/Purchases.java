@@ -3,30 +3,22 @@ package ru.example.entity;
 import java.util.Date;
 
 public class Purchases {
-    private Buyer buyer;
-    private Product product;
+    private int id;
+    private int buyer_id;
+    private int product_id;
     private Date date;
 
-    public Purchases(Buyer buyer, Product product, Date date) {
-        this.buyer = buyer;
-        this.product = product;
+    public Purchases(int id, int buyer_id, int product_id, Date date) {
+        this.id = id;
+        this.buyer_id = buyer_id;
+        this.product_id = product_id;
         this.date = date;
     }
 
-    public Buyer getBuyer() {
-        return buyer;
-    }
-
-    public void setBuyer(Buyer buyer) {
-        this.buyer = buyer;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
+    public Purchases(int buyer_id, int product_id, Date date) {
+        this.buyer_id = buyer_id;
+        this.product_id = product_id;
+        this.date = date;
     }
 
     public Date getDate() {
@@ -35,5 +27,29 @@ public class Purchases {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
+    }
+
+    public int getBuyer_id() {
+        return buyer_id;
+    }
+
+    public void setBuyer_id(int buyer_id) {
+        this.buyer_id = buyer_id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

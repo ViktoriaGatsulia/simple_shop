@@ -1,41 +1,57 @@
 package ru.example;
 
-import org.postgresql.util.PGobject;
-import ru.example.entity.Buyer;
+import ru.example.convert.Converter;
+import ru.example.entity.InputSearch;
+import ru.example.entity.InputStat;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Date;
+import java.io.IOException;
+
+import static ru.example.convert.Converter.toJavaObject;
+import static ru.example.service.StatisticService.statisticOnPeriod;
+
 
 public class App {
     //  Database credentials
 
     public static void main(String[] argv) {
-        try {
-            Connection conn = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/vikula", "vikula", "111");
-            conn.setAutoCommit(false);
 
-            Statement stmt = conn.createStatement();
-
-            ResultSet resultSet = stmt.executeQuery("SELECT * FROM purchases;");
-
-            while (resultSet.next()) {
-                Date date = resultSet.getDate("date");
-                System.out.println("Дата: " + date);
-                System.out.println("\n===================\n");
-            }
-
-            conn.close();
-        } catch (java.sql.SQLException e) {
-            System.out.println(e.getMessage());
+        if (argv.length < 3) {
+            System.out.println("Недостаточно аргументов командной строки");
+            System.exit(0);
         }
+
+        if (argv[0].equals("search")) {
+            try {
+                InputSearch inputSearch = toJavaObject(argv[1], InputSearch.class);
+                System.out.println(inputSearch.toString());
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        } else if (argv[0].equals("stat")) {
+            try {
+                InputStat inputStat = toJavaObject(argv[1], InputStat.class);
+                System.out.println(inputStat.toString());
+
+                statisticOnPeriod(inputStat);
+
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            System.out.println("Неизвестная команда '" + argv[0] + "'");
+            System.exit(0);
+        }
+
+
     }
 
 }
 
 /*
+mvn clean install && java -jar target/simple_shop-1.0-SNAPSHOT.jar
 mvn compile && mvn package && java -jar target/simple_shop-1.0-SNAPSHOT.jar
+java -jar target/simple_shop-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+mvn compile && mvn package && java -jar target/simple_shop-1.0-SNAPSHOT-jar-with-dependencies.jar stat exampleInputFile/exampleInputStat.json exampleOutputFile/output.json
+
  */
