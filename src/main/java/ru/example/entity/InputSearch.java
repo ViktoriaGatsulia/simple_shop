@@ -31,17 +31,4 @@ public class InputSearch implements InputMes {
         this.criterias = criterias;
     }
 
-
-//    public void givenJsonArray__whenDeserializingAsArray__thenCorrect()
-//            throws JsonParseException, JsonMappingException, IOException {
-//
-//        ObjectMapper mapper = new ObjectMapper();
-//        List<Criterias> listOfDtos = Lists.newArrayList(
-//                new MyDto("a", 1, true), new MyDto("bc", 3, false));
-//        String jsonArray = mapper.writeValueAsString(listOfDtos);
-//
-//        //[{"stringValue":"a","intValue":1,"booleanValue":true},
-//        //{"stringValue":"bc","intValue":3,"booleanValue":false}]
-//        Criterias[]asArray = mapper.readValue(jsonArray, Criterias[].class);
-//    }
 }
