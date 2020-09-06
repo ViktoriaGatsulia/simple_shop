@@ -3,6 +3,7 @@ package ru.example.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,6 +36,14 @@ public class UserOutputStat implements Comparable<UserOutputStat>{
     }
 
     public List<Product> getPurchases() {
+        if (Objects.isNull(purchases)) return new ArrayList<>();
+
+        purchases.sort(new Comparator<Product>() {
+            @Override
+            public int compare(Product o1, Product o2) {
+                return -(Double.compare(o1.getPrice(), o2.getPrice()));
+            }
+        });
         return purchases;
     }
 

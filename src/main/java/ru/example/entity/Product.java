@@ -2,7 +2,7 @@ package ru.example.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class Product {
+public class Product implements Comparable<Product>{
     @JsonIgnore private int id;
     private String name;
     private double price;
@@ -45,5 +45,17 @@ public class Product {
     @Override
     public String toString() {
         return "{'product_name':'" + getName() + "','price':'" + getPrice() + "'}";
+    }
+
+    /**
+     * Метод сравнения объектов класса Product
+     * @param o - объект с которым идёт сравнение
+     * @return - отрицательное целое число если данный объект меньше указанного
+     * @return - нуль, елси данный объект равен указанному
+     * @return - положительно целое число если данный объект больше указанного
+     */
+    @Override
+    public int compareTo(Product o) {
+        return Double.compare(this.getPrice(), o.getPrice());
     }
 }

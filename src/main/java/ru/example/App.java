@@ -53,6 +53,6 @@ mvn clean install && java -jar target/simple_shop-1.0-SNAPSHOT.jar
 mvn compile && mvn package && java -jar target/simple_shop-1.0-SNAPSHOT.jar
 java -jar target/simple_shop-1.0-SNAPSHOT-jar-with-dependencies.jar
 
-mvn compile && mvn package && java -jar target/simple_shop-1.0-SNAPSHOT-jar-with-dependencies.jar stat exampleInputFile/exampleInputStat.json exampleOutputFile/output.json
+mvn compile && mvn package && java -jar target/simple_shop-1.0-SNAPSHOT-jar-with-dependencies.jar stat exampleInputFile/exampleInputStat.json exampleOutputFile/outputStat.json
 
  */
