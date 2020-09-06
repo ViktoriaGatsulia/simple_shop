@@ -6,6 +6,7 @@ import ru.example.entity.InputStat;
 
 import java.io.IOException;
 
+import static ru.example.convert.Converter.toJSON;
 import static ru.example.convert.Converter.toJavaObject;
 import static ru.example.service.StatisticService.statisticOnPeriod;
 
@@ -32,7 +33,7 @@ public class App {
                 InputStat inputStat = toJavaObject(argv[1], InputStat.class);
                 System.out.println(inputStat.toString());
 
-                statisticOnPeriod(inputStat);
+                toJSON(statisticOnPeriod(inputStat), argv[2]);
 
             } catch (IOException e) {
                 System.out.println(e.getMessage());

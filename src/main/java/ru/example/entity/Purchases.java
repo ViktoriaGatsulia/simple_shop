@@ -1,9 +1,11 @@
 package ru.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 public class Purchases {
-    private int id;
+    @JsonIgnore private int id;
     private int buyer_id;
     private int product_id;
     private Date date;

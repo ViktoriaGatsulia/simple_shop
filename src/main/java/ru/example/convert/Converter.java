@@ -10,8 +10,6 @@ import java.io.IOException;
 public class Converter {
 
     public static void toJSON(Object o, String baseFile) throws IOException {
-        if (!(o instanceof InputSearch || o instanceof InputStat))
-            return;
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(new File(baseFile), o);
         System.out.println("json created!");

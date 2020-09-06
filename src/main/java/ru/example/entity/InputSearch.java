@@ -14,7 +14,7 @@ import java.util.List;
  *   ]
  * }
  */
-public class InputSearch {
+public class InputSearch implements InputMes {
     private List<Criterias> criterias;
 
     public InputSearch() {}

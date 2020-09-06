@@ -65,6 +65,22 @@ JOIN purchases pur ON b.id = pur.buyer_id
 JOIN product pr ON pr.id = pur.product_id
 WHERE pur.date BETWEEN to_date('2020-01-14', 'yyyy-mm-dd') AND to_date('2020-01-26', 'yyyy-mm-dd');
 
+
+SELECT b.id AS id_user, b.first_name, b.last_name, SUM(pr.price) AS sum_for_product, pr.id AS id_product, pr.name
+FROM buyer b
+JOIN purchases pur ON b.id = pur.buyer_id
+JOIN product pr ON pr.id = pur.product_id
+WHERE pur.date BETWEEN to_date('2020-01-14', 'yyyy-mm-dd') AND to_date('2020-01-26', 'yyyy-mm-dd')
+GROUP BY b.id, pr.id;
+
+SELECT id_user,
+SUM(sum_for_product) AS total_sum
+FROM stat
+GROUP BY id_user
+ORDER BY total_sum DESC;
+
+DROP TABLE stat;
+
 -- Поиск покупателей, у которых общая стоимость всех покупок
 -- попадает в интервал
 SELECT b.id, b.first_name, b.last_name,

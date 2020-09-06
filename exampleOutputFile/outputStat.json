@@ -1,0 +1,1 @@
+{"type":"stat","totalDays":13,"customers":[{"name":"Иван Иванов","purchases":[{"name":"Сок","price":15.0},{"name":"Чай","price":200.0},{"name":"Лимонад","price":5.0},{"name":"Миниральная вода","price":20.0}],"totalExpenses":240.0},{"name":"Даша Иванова","purchases":[{"name":"Миниральная вода","price":50.0}],"totalExpenses":50.0}],"totalExpenses":290.0,"avgExpenses":145.0}

@@ -1,6 +1,6 @@
 package ru.example.entity;
 
-public class SimpleError {
+public class SimpleError implements OutputMes {
     private String type;
     private String message;
 

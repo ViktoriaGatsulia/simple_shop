@@ -1,7 +1,9 @@
 package ru.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Buyer {
-    private int id;
+    @JsonIgnore private int id;
     private String firstName;
     private String lastName;
 
