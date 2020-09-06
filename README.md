@@ -131,7 +131,7 @@ $ sudo adduser vikula;
 $ psql -h localhost nameDB nameUser
 ````
 ### Дамп БД в файле src/main/resources/create.sql
-После выполнения скрипта будут созданы нужные таблицы и добавлены тестовые данные
+После выполнения скрипта будут созданы нужные таблицы и добавлены тестовые данные.
 
 ### SQL команды, которые используются в программе можно найти в файле src/main/resources/myCommand.sql
 
@@ -142,22 +142,4 @@ $ mvn package # упаковка проекта
 $ java -jar target/simple_shop-1.0-SNAPSHOT-jar-with-dependencies.jar instruction input.json output.json # запуск проекта
 ````
 Где 'instruction' - тип операции, которую нужно выполнить (search или stat),
-input.json - входной файл, output.json - выходной файл
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+input.json - входной файл, output.json - выходной файл.
