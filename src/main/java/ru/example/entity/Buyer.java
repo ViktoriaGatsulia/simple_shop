@@ -2,49 +2,22 @@ package ru.example.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class Buyer {
-    @JsonIgnore private int id;
+/**
+ * Абстрактный класс, описвыающий покупателя
+ * @author ViktoriaGatsulia
+ * @version 1.0
+ */
+abstract public class Buyer {
+    /**
+     * Идентификатор пользователя
+     */
+    private int id;
+    /**
+     * Имя пользователя
+     */
     private String firstName;
+    /**
+     * Фамилия пользоватлея
+     */
     private String lastName;
-
-    public Buyer(String firstName, String lastName, int id) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public Buyer(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "{'first_name':'" + getFirstName() + "','last_name':'" + getLastName() + "'}";
-    }
-
 }

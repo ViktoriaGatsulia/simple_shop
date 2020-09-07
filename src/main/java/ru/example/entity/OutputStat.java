@@ -4,6 +4,8 @@ import java.util.*;
 
 /**
  * Объект, содержащий статистику за период
+ * @author ViktoriaGatsulia
+ * @version 1.0
  */
 public class OutputStat implements OutputMes {
     /**

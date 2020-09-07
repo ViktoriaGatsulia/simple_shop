@@ -15,6 +15,8 @@ import static ru.example.convert.Converter.toJSON;
 
 /**
  * Класс для обработки статистики за период
+ * @author ViktoriaGatsulia
+ * @version 1.0
  */
 public class StatisticService {
 

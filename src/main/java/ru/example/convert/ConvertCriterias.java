@@ -5,7 +5,17 @@ import ru.example.entity.entityToJson.*;
 
 import java.util.Objects;
 
+/**
+ * Класс для определения типа критерия
+ * @author ViktoriaGatsulia
+ * @version 1.0
+ */
 public class ConvertCriterias {
+    /**
+     * Статически метод для конвертации общего критерия в определённый
+     * @param c - общий критерий
+     * @return - конкретный критерий
+     */
     public static CriteriasInterface convertCriterias(Criterias c) {
         boolean last_name_boolean = !Objects.isNull(c.getLast_name());
         boolean product_name_boolean = !Objects.isNull(c.getProduct_name());

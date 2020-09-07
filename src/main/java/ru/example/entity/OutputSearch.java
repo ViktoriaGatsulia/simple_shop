@@ -6,6 +6,8 @@ import java.util.Objects;
 
 /**
  * Класс для сбора результатов поиска по критериям
+ * @author ViktoriaGatsulia
+ * @version 1.0
  */
 public class OutputSearch implements OutputMes {
     /**

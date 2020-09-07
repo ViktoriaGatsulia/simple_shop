@@ -13,9 +13,18 @@ import static ru.example.service.SearchService.searchData;
 import static ru.example.service.StatisticService.statisticOnPeriod;
 import static ru.example.convert.Converter.toJSON;
 
-
+/**
+ * Оснавной класс приложения
+ * @author ViktoriaGatsulia
+ * @version 1.0
+ */
 public class App {
 
+    /**
+     * Класс main
+     * @param argv - аргументы командной строки
+     * @throws IOException - стандартные исключения ввода-вывода
+     */
     public static void main(String[] argv) throws IOException {
 
         if (argv.length < 3) {
@@ -59,6 +68,8 @@ public class App {
 }
 
 /*
+Команды для работы с проектом
+
 mvn clean install && java -jar target/simple_shop-1.0-SNAPSHOT.jar
 mvn compile && mvn package && java -jar target/simple_shop-1.0-SNAPSHOT.jar
 java -jar target/simple_shop-1.0-SNAPSHOT-jar-with-dependencies.jar

@@ -47,4 +47,3 @@ INSERT INTO purchases (buyer_id, product_id, date) VALUES (2, 3, '2020-01-01');
 INSERT INTO purchases (buyer_id, product_id, date) VALUES (3, 1, '2020-01-30');
 INSERT INTO purchases (buyer_id, product_id, date) VALUES (3, 2, '2020-01-30');
 INSERT INTO purchases (buyer_id, product_id, date) VALUES (3, 3, '2020-01-30');
-И

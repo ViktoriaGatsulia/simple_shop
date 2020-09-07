@@ -14,6 +14,8 @@ import static ru.example.convert.Converter.toJSON;
 
 /**
  * Класс для поиска по критериям
+ * @author ViktoriaGatsulia
+ * @version 1.0
  */
 public class SearchService {
 
