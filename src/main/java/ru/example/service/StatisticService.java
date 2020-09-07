@@ -28,7 +28,7 @@ public class StatisticService {
      * @param inputStat - входные данные, по которым собирается статистика
      * @return - статистика за период или сообщение об ошибке
      */
-    public static OutputMes statisticOnPeriod(InputStat inputStat) throws IOException {
+    public static OutputMes statisticOnPeriod(InputStat inputStat, String URL, String USER, String PASSWD) throws IOException {
         /*
             Проверка на существование входных данных
          */
@@ -65,19 +65,12 @@ public class StatisticService {
         try {
             /*
                 Попытка открыть соединение с БД
-                URL
-                USER
-                PASSWORD
-             */
-            Connection conn = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/vikula", "vikula", "111");
-            // conn.setAutoCommit(false);
-
+            */
+            Connection conn = DriverManager.getConnection(URL, USER, PASSWD);
             /*
                 Создание SQL выражения для доступа к БД для общих целей
              */
             Statement stmt = conn.createStatement();
-
             /*
                 Попытка получить множество строк в ответ на SQL запрос
              */
@@ -146,7 +139,6 @@ public class StatisticService {
 
             }
 
-
             /*
                 Вычисление суммы всех покупок всех покупателей
              */
@@ -168,7 +160,6 @@ public class StatisticService {
              */
             toJSON(new SimpleError("error", e.getMessage()), "error.json");
         }
-
         /*
             Возвращаем объект с инф о статистике за период
          */

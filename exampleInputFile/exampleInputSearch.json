@@ -3,6 +3,7 @@
     {"last_name" : "Иванов"},
     {"product_name" : "Миниральная вода", "min_times" : 3},
     {"min_expenses" : 10, "max_expenses" : 250},
-    {"bad_customers" : 2}
+    {"bad_customers" : 2},
+    {"last_name" : "Иванович"}
   ]
 }

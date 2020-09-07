@@ -3,43 +3,53 @@ package ru.example;
 import ru.example.convert.Converter;
 import ru.example.entity.InputSearch;
 import ru.example.entity.InputStat;
+import ru.example.entity.SimpleError;
 
 import java.io.IOException;
 
 import static ru.example.convert.Converter.toJSON;
 import static ru.example.convert.Converter.toJavaObject;
+import static ru.example.service.SearchService.searchData;
 import static ru.example.service.StatisticService.statisticOnPeriod;
+import static ru.example.convert.Converter.toJSON;
 
 
 public class App {
-    //  Database credentials
 
-    public static void main(String[] argv) {
+    public static void main(String[] argv) throws IOException {
 
         if (argv.length < 3) {
-            System.out.println("Недостаточно аргументов командной строки");
+            String error = "Недостаточно аргументов командной строки";
+            toJSON(new SimpleError("error", error), "error.json");
+            System.out.println(error);
             System.exit(0);
         }
+
+        String URL = "jdbc:postgresql://localhost:5432/vikula";
+        String USER = "vikula";
+        String PASSWD = "111";
+
 
         if (argv[0].equals("search")) {
             try {
                 InputSearch inputSearch = toJavaObject(argv[1], InputSearch.class);
-                System.out.println(inputSearch.toString());
+                toJSON(searchData(inputSearch, URL, USER, PASSWD), argv[2]);
+
             } catch (IOException e) {
-                System.out.println(e.getMessage());
+                toJSON(new SimpleError("error", e.getMessage()), "error.json");
             }
         } else if (argv[0].equals("stat")) {
             try {
                 InputStat inputStat = toJavaObject(argv[1], InputStat.class);
-                System.out.println(inputStat.toString());
-
-                toJSON(statisticOnPeriod(inputStat), argv[2]);
+                toJSON(statisticOnPeriod(inputStat, URL, USER, PASSWD), argv[2]);
 
             } catch (IOException e) {
-                System.out.println(e.getMessage());
+                toJSON(new SimpleError("error", e.getMessage()), "error.json");
             }
         } else {
-            System.out.println("Неизвестная команда '" + argv[0] + "'");
+            String error = "Неизвестная команда '" + argv[0] + "'";
+            toJSON(new SimpleError("error", error), "error.json");
+            System.out.println(error);
             System.exit(0);
         }
 
@@ -53,6 +63,9 @@ mvn clean install && java -jar target/simple_shop-1.0-SNAPSHOT.jar
 mvn compile && mvn package && java -jar target/simple_shop-1.0-SNAPSHOT.jar
 java -jar target/simple_shop-1.0-SNAPSHOT-jar-with-dependencies.jar
 
+# stat
 mvn compile && mvn package && java -jar target/simple_shop-1.0-SNAPSHOT-jar-with-dependencies.jar stat exampleInputFile/exampleInputStat.json exampleOutputFile/outputStat.json
+# search
+mvn compile && mvn package && java -jar target/simple_shop-1.0-SNAPSHOT-jar-with-dependencies.jar search exampleInputFile/exampleInputSearch.json exampleOutputFile/outputSearch.json
 
  */

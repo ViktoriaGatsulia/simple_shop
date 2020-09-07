@@ -20,7 +20,7 @@ CREATE TABLE purchases (
     );
 
 INSERT INTO buyer (first_name, last_name) VALUES ('Иван', 'Иванов');
-INSERT INTO buyer (first_name, last_name) VALUES ('Иван', 'Москаль');
+INSERT INTO buyer (first_name, last_name) VALUES ('Иван', 'Иванович');
 INSERT INTO buyer (first_name, last_name) VALUES ('Даша', 'Иванова');
 INSERT INTO buyer (first_name, last_name) VALUES ('Александр', 'Иванов');
 
@@ -47,3 +47,4 @@ INSERT INTO purchases (buyer_id, product_id, date) VALUES (2, 3, '2020-01-01');
 INSERT INTO purchases (buyer_id, product_id, date) VALUES (3, 1, '2020-01-30');
 INSERT INTO purchases (buyer_id, product_id, date) VALUES (3, 2, '2020-01-30');
 INSERT INTO purchases (buyer_id, product_id, date) VALUES (3, 3, '2020-01-30');
+И
